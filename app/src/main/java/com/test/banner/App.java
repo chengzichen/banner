@@ -5,7 +5,6 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.zxy.recovery.core.Recovery;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,12 +22,6 @@ public class App extends Application {
         app=this;
         getScreen(this);
         Fresco.initialize(this);
-        Recovery.getInstance()
-                .debug(true)
-                .recoverInBackground(false)
-                .recoverStack(true)
-                .mainPage(MainActivity.class)
-                .init(this);
         String[] urls = getResources().getStringArray(R.array.url);
         String[] tips = getResources().getStringArray(R.array.title);
         List list = Arrays.asList(urls);

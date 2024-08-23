@@ -1,24 +1,35 @@
 
 buildscript {
     repositories {
-        jcenter()
-        google()
+        repositories {
+            maven { url 'https://jitpack.io' }
+            maven { url "https://plugins.gradle.org/m2/" }
+            jcenter()
+            mavenCentral()
+            google()
+        }
     }
     dependencies {
 
-        classpath 'com.android.tools.build:gradle:3.5.3'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.android.tools.build:gradle:4.2.2'
 
     }
 }
 
 allprojects {
     repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://jitpack.io" }
         jcenter()
+        mavenCentral()
         google()
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+            options.addStringOption('encoding', 'UTF-8')
+        }
     }
 }
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir
